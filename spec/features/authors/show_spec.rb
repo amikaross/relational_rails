@@ -45,6 +45,11 @@ RSpec.describe 'the authors show page', type: :feature do
         visit "/authors/#{@author.id}"
         expect(page).to have_link("Return Home", href: "/")
       end
+
+      it "displays a link to the Author's books page" do 
+        visit "/authors/#{@author.id}"
+        expect(page).to have_link("Author's Books", href: "/authors/#{@author.id}/books")
+      end
     end
   end
 end

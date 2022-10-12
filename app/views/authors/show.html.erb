@@ -12,4 +12,4 @@
 <p>Log created: <%= @author.created_at %></p>
 <p>Log updated: <%= @author.updated_at %></p>
 <p>No. books: <%= @author.books.count %></p>
-<p><a href="authors/<% @author.id %>/books">Author's Books</a></p>
+<p><a href="/authors/<%= @author.id %>/books">Author's Books</a></p>
