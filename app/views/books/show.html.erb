@@ -3,7 +3,7 @@
 
 <h1><%= @book.title %></h1>
 
-<p>Author: <%= Author.find(@book.author_id).name %></p
+<p>Author: <%= @book.author.name %></p
 <p>Part of a series: <%= @book.part_of_series %></p>
 <p>Word count: <%= @book.word_count %></p>
 <p>Log created: <%= @book.created_at %></p>
