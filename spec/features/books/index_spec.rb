@@ -8,40 +8,43 @@ RSpec.describe 'the books index page' do
     @book_1 = @author_1.books.create!(part_of_series: false, word_count: 98000, title: "Left Hand of Darkness", genre: "Scifi/Fantasy")
     @book_2 = @author_2.books.create!(part_of_series: true, word_count: 56043, title: "Accelerando", genre: "Scifi")
     @book_3 = @author_3.books.create!(part_of_series: false, word_count: 105645, title: "My Go Story", genre: "Non-fiction")
-
   end
 
-  it "displays a list of all book titles" do 
-    visit "/books"
-
-    expect(page).to have_content(@book_1.title)
-    expect(page).to have_content(@book_2.title)
-    expect(page).to have_content(@book_3.title)
-  end
-
-  it "displays all of the book attributes" do 
-    visit "/books"
-
-    expect(page).to have_content(@book_1.title)
-    expect(page).to have_content(@book_1.author.name)
-    expect(page).to have_content(@book_1.part_of_series)
-    expect(page).to have_content(@book_1.word_count)
-    expect(page).to have_content(@book_1.genre)
-    expect(page).to have_content(@book_1.created_at)
-    expect(page).to have_content(@book_1.updated_at)
-    expect(page).to have_content(@book_2.title)
-    expect(page).to have_content(@book_2.author.name)
-    expect(page).to have_content(@book_2.part_of_series)
-    expect(page).to have_content(@book_2.word_count)
-    expect(page).to have_content(@book_2.genre)
-    expect(page).to have_content(@book_2.created_at)
-    expect(page).to have_content(@book_2.updated_at)
-    expect(page).to have_content(@book_3.title)
-    expect(page).to have_content(@book_3.author.name)
-    expect(page).to have_content(@book_3.part_of_series)
-    expect(page).to have_content(@book_3.word_count)
-    expect(page).to have_content(@book_3.genre)
-    expect(page).to have_content(@book_3.created_at)
-    expect(page).to have_content(@book_3.updated_at)
+  describe "As a visitor" do 
+    describe "When I visit '/books'" do 
+      it "displays a list of all book titles" do 
+        visit "/books"
+    
+        expect(page).to have_content(@book_1.title)
+        expect(page).to have_content(@book_2.title)
+        expect(page).to have_content(@book_3.title)
+      end
+    
+      it "displays all of the book attributes" do 
+        visit "/books"
+    
+        expect(page).to have_content(@book_1.title)
+        expect(page).to have_content(@book_1.author.name)
+        expect(page).to have_content(@book_1.part_of_series)
+        expect(page).to have_content(@book_1.word_count)
+        expect(page).to have_content(@book_1.genre)
+        expect(page).to have_content(@book_1.created_at)
+        expect(page).to have_content(@book_1.updated_at)
+        expect(page).to have_content(@book_2.title)
+        expect(page).to have_content(@book_2.author.name)
+        expect(page).to have_content(@book_2.part_of_series)
+        expect(page).to have_content(@book_2.word_count)
+        expect(page).to have_content(@book_2.genre)
+        expect(page).to have_content(@book_2.created_at)
+        expect(page).to have_content(@book_2.updated_at)
+        expect(page).to have_content(@book_3.title)
+        expect(page).to have_content(@book_3.author.name)
+        expect(page).to have_content(@book_3.part_of_series)
+        expect(page).to have_content(@book_3.word_count)
+        expect(page).to have_content(@book_3.genre)
+        expect(page).to have_content(@book_3.created_at)
+        expect(page).to have_content(@book_3.updated_at)
+      end
+    end
   end
 end

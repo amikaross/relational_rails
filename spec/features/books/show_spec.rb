@@ -9,22 +9,26 @@ RSpec.describe 'the books showpage' do
     @book_2 = @author_2.books.create!(part_of_series: true, word_count: 56043, title: "Accelerando", genre: "Scifi")
   end
 
-  it "displays one title of the book who's ID is visited" do 
-    visit "/books/#{@book_1.id}"
-
-    expect(page).to have_content(@book_1.title)
-    expect(page).to_not have_content(@book_2.title)
-  end
-
-  it "displays all of the book's attributes" do 
-    visit "/books/#{@book_1.id}"
-
-    expect(page).to have_content(@book_1.title)
-    expect(page).to have_content(@book_1.author.name)
-    expect(page).to have_content(@book_1.part_of_series)
-    expect(page).to have_content(@book_1.word_count)
-    expect(page).to have_content(@book_1.genre)
-    expect(page).to have_content(@book_1.created_at)
-    expect(page).to have_content(@book_1.updated_at)
+  describe "As a visitor" do 
+    describe "When I visit '/authors/:author_id/books'" do 
+      it "displays one title of the book who's ID is visited" do 
+        visit "/books/#{@book_1.id}"
+    
+        expect(page).to have_content(@book_1.title)
+        expect(page).to_not have_content(@book_2.title)
+      end
+    
+      it "displays all of the book's attributes" do 
+        visit "/books/#{@book_1.id}"
+    
+        expect(page).to have_content(@book_1.title)
+        expect(page).to have_content(@book_1.author.name)
+        expect(page).to have_content(@book_1.part_of_series)
+        expect(page).to have_content(@book_1.word_count)
+        expect(page).to have_content(@book_1.genre)
+        expect(page).to have_content(@book_1.created_at)
+        expect(page).to have_content(@book_1.updated_at)
+      end
+    end
   end
 end
