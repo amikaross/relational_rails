@@ -1,6 +1,10 @@
-<h1>List of Authors</h1>
-<h4><a href="/">return home</a></h4>
+<ul>
+  <li><a href="/books">Book List</a></li>
+  <li><a href="/">Return Home</a></li>
+</ul>
 
+<h1>List of Authors</h1>
 <% @authors.each do |author| %>
   <h3><a href="/authors/<%= author.id %>"><%= author.name %></a></h3>
+  <p>Log created: <%= author.created_at %><p>
 <% end %>

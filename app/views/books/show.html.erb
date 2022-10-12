@@ -1,9 +1,13 @@
-<a href="/authors">Author Index</a>
-<a href="/books">Book Index</a>
+<ul>
+  <li><a href="/authors">Author List</a></li>
+  <li><a href="/books">Book List</a></li>
+  <li><a href="/">return home</a></li>
+</ul>
 
 <h1><%= @book.title %></h1>
 
 <p>Author: <%= @book.author.name %></p
+<p>Genre: <%= @book.genre %></p>
 <p>Part of a series: <%= @book.part_of_series %></p>
 <p>Word count: <%= @book.word_count %></p>
 <p>Log created: <%= @book.created_at %></p>
