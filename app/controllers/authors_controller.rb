@@ -6,9 +6,4 @@ class AuthorsController < ApplicationController
   def show 
     @author = Author.find(params[:id])
   end
-
-  def books_index
-    @author = Author.find(params[:id])
-    @books = @author.books
-  end
 end
