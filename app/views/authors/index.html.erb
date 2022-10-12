@@ -1,0 +1,6 @@
+<h1>List of Authors</h1>
+<h4><a href="/">return home</a></h4>
+
+<% @authors.each do |author| %>
+  <h3><a href="/authors/<%= author.id %>"><%= author.name %></a></h3>
+<% end %>
