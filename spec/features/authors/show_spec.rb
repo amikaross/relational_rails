@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'the authors show page', type: :feature do 
   before(:each) do 
-    @author = Author.create!(active: false, dob_year: 1950, name: "Ursula K Leguin", country: "USA")
+    @author = Author.create!(active: false, dob_year: 1950, name: "Nam Nam", country: "USA")
     @author_2 = Author.create!(active: true, dob_year: 1945, name: "Iain Banks", country: "UK")
   end
   describe "As a visitor" do 

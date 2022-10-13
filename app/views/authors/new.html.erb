@@ -1,0 +1,17 @@
+<form action="/authors" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <h3>Create New Author Record:</h3>
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="author[name]"/><br/>
+  <br><label for="dob_year">Year Born:</label><br>
+  <input type="text" id="dob_year" name="author[dob_year]"/><br/>
+  <br><label for="country">Country of Origin:</label><br>
+  <input type="text" id="country" name="author[country]"/><br/>
+  <br><label for="active">Currently Active:</label>
+  <select id="active" name="author[active]">
+    <option value="true">True</option>
+    <option value="false">False</option>
+  </select>
+  <br/>
+  <br><br><input type="submit" value="Create Author">
+</form>

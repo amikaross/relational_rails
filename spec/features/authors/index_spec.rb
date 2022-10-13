@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'the authors index page', type: :feature do 
   before(:each) do 
-    @author = Author.create!(active: false, dob_year: 1950, name: "Ursula K Leguin", country: "USA")
+    @author = Author.create!(active: false, dob_year: 1950, name: "Nam Nam", country: "USA")
     @author_2 = Author.create!(active: true, dob_year: 1945, name: "Iain Banks", country: "UK")
     @author_3 = Author.create!(active: false, dob_year: 1989, name: "Lee Saville", country: "USA")
   end
@@ -30,6 +30,11 @@ RSpec.describe 'the authors index page', type: :feature do
       it "displays a link to return home" do 
         visit "/authors"
         expect(page).to have_link("Return Home", href: "/")
+      end
+
+      it "displays a link to the 'New Author' page" do 
+        visit "/authors"
+        expect(page).to have_link("New Author", href: "/authors/new")
       end
     end
   end

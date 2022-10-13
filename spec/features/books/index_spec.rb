@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'the books index page' do 
   before(:each) do 
-    @author_1 = Author.create!(active: false, dob_year: 1950, name: "Ursula K Leguin", country: "USA")
+    @author_1 = Author.create!(active: false, dob_year: 1950, name: "Nam Nam", country: "USA")
     @author_2 = Author.create!(active: true, dob_year: 1945, name: "Iain Banks", country: "UK")
     @author_3 = Author.create!(active: false, dob_year: 1989, name: "Lee Saville", country: "Brazil")
-    @book_1 = @author_1.books.create!(part_of_series: false, word_count: 98000, title: "Left Hand of Darkness", genre: "Scifi/Fantasy")
+    @book_1 = @author_1.books.create!(part_of_series: false, word_count: 98000, title: "Darkness", genre: "Scifi/Fantasy")
     @book_2 = @author_2.books.create!(part_of_series: true, word_count: 56043, title: "Accelerando", genre: "Scifi")
     @book_3 = @author_3.books.create!(part_of_series: false, word_count: 105645, title: "My Go Story", genre: "Non-fiction")
   end
