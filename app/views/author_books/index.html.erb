@@ -15,3 +15,5 @@
   <p>Log created: <%= book.created_at %></p>
   <p>Log updated: <%= book.updated_at %></p>
 <% end %>
+
+<%= link_to "Create Book", "/authors/#{@author.id}/books/new" %>
