@@ -9,7 +9,6 @@
   <p>
     <%= link_to "#{author.name}", "/authors/#{author.id}" %><br>
     Log created: <%= author.created_at %><br>
-    <%= button_to "Update Author", "/authors/#{author.id}/edit", method: :get %>
   </p>
   
 <% end %>
