@@ -1,0 +1,11 @@
+<%= form_with url: "/authors/#{@author.id}", method: :patch, local: true do |form| %>
+  <%= form.label(:name, "Name:") %><br>
+  <%= form.text_field(:name, value: @author.name) %><br>
+  <%= form.label(:dob_year, "Year Born:") %><br>
+  <%= form.text_field(:dob_year, value: @author.dob_year) %><br>
+  <%= form.label(:country, "Country:") %><br>
+  <%= form.text_field(:country, value: @author.country) %><br>
+  <%= form.label(:active, "Currently Active:") %><br>
+  <%= form.select(:active, [["True", true], ["False", false]], selected: @author.active) %><br><br>
+  <%= form.submit("Update") %>
+<% end %>
