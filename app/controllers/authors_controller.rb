@@ -11,15 +11,11 @@ class AuthorsController < ApplicationController
   end
 
   def create
-    author = Author.new({
-      name: params[:author][:name], 
-      dob_year: params[:author][:dob_year], 
-      country: params[:author][:country], 
-      active: params[:author][:active]
-      })
-
-    author.save 
-
+    author = Author.create(author_params)
     redirect_to "/authors"
+  end
+
+  def author_params
+    params.permit(:name, :dob_year, :country, :active)
   end
 end
