@@ -5,7 +5,7 @@ RSpec.describe "edit books" do
     describe "When I visit the Books show page" do 
       it "displays a button to Update Book, which takes me to an edit page" do 
         author = Author.create!(active: false, dob_year: 1950, name: "Nam Nam", country: "USA")
-        book = author.books.create!(part_of_series: false, word_count: 98000, title: "Darkness", genre: "Scifi/Fantasy")
+        book = author.books.create!(part_of_series: true, word_count: 98000, title: "Darkness", genre: "Scifi/Fantasy")
         visit "/books/#{book.id}"
         click_button("Update Book")
 
@@ -14,7 +14,7 @@ RSpec.describe "edit books" do
 
       it "can edit the book" do
         author = Author.create!(active: false, dob_year: 1950, name: "Nam Nam", country: "USA")
-        book = author.books.create!(part_of_series: false, word_count: 98000, title: "Darkness", genre: "Scifi/Fantasy")
+        book = author.books.create!(part_of_series: true, word_count: 98000, title: "Darkness", genre: "Scifi/Fantasy")
         visit "/books/#{book.id}"
 
         expect(page).to_not have_content("Heart of")
