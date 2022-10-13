@@ -6,8 +6,12 @@
 
 <h1>List of Authors</h1>
 <% @authors.each do |author| %>
-  <h3><a href="/authors/<%= author.id %>"><%= author.name %></a></h3>
-  <p>Log created: <%= author.created_at %><p>
+  <p>
+    <%= link_to "#{author.name}", "/authors/#{author.id}" %><br>
+    Log created: <%= author.created_at %><br>
+    <%= button_to "Update Author", "/authors/#{author.id}/edit", method: :get %>
+  </p>
+  
 <% end %>
 <br>
 <h3><a href="/authors/new">New Author</a></h3>

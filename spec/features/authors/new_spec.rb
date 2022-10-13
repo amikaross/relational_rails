@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe 'the new author page', type: :feature do 
+RSpec.describe "create a new author", type: :feature do 
   describe "As a visitor" do 
     describe "When I visit '/authors/new'" do 
       it "displays a form for a new author record" do 
@@ -12,7 +12,7 @@ RSpec.describe 'the new author page', type: :feature do
         expect(page).to have_select("active")
       end
 
-      it "redirects me to the updated Author index when I click 'Create Author'" do 
+      it "after filling in form, clicking 'Create Author' redirects me to the updated Author index" do 
         visit "/authors/new"
         fill_in "name", with: "Ursula K. Le Guin"
         fill_in "dob_year", with: "1929"
