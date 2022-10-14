@@ -14,3 +14,4 @@
 <p>Log updated: <%= @book.updated_at %></p>
 
 <%= button_to "Update Book", "/books/#{@book.id}/edit", method: :get %>
+<%= button_to "Delete", "/books/#{@book.id}", method: :delete %>
