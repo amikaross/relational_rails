@@ -42,7 +42,7 @@ RSpec.describe 'the books showpage' do
 
       it "displays a link to return home" do 
         visit "/books/#{@book_1.id}"
-        expect(page).to have_link("Return Home", href: "/")
+        expect(page).to have_link("Home", href: "/")
       end
     end
   end
