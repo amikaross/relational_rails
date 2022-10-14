@@ -44,7 +44,7 @@ RSpec.describe 'the books index page' do
 
       it "displays a link to return home" do 
         visit "/books"
-        expect(page).to have_link("Return Home", href: "/")
+        expect(page).to have_link("Home", href: "/")
       end
     end
   end

@@ -52,7 +52,7 @@ RSpec.describe 'the authors books index page' do
 
       it "displays a link to return home" do 
         visit "/authors/#{@author_1.id}/books"
-        expect(page).to have_link("Return Home", href: "/")
+        expect(page).to have_link("Home", href: "/")
       end
 
       it "displays a 'Sort Alphabetically' button which reloads the index, sorted" do 
