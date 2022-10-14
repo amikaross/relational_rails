@@ -6,7 +6,7 @@ RSpec.describe "Create a new Author's book", type: :feature do
       it "has a link to a form to create a new book record by that author" do 
         author = Author.create!(active: false, dob_year: 1950, name: "Ursula K Leguin", country: "USA")
         visit "/authors/#{author.id}/books"
-        click_link("Create Book")
+        click_button("Create Book")
 
         expect(current_path).to eq("/authors/#{author.id}/books/new")
         expect(page).to have_button("Create Book")
@@ -22,7 +22,7 @@ RSpec.describe "Create a new Author's book", type: :feature do
 
         expect(page).to_not have_content("The Left Hand of Darkness")
 
-        click_link("Create Book")
+        click_button("Create Book")
         fill_in "title", with: "The Left Hand of Darkness"
         fill_in "genre", with: "Scifi"
         fill_in "word_count", with: "89745"

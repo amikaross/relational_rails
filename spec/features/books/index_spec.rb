@@ -12,24 +12,17 @@ RSpec.describe 'the books index page' do
 
   describe "As a visitor" do 
     describe "When I visit '/books'" do 
-      it "displays a list of all book titles" do 
+      it "displays a list of book titles where part_of_series is 'true'" do 
         visit "/books"
     
-        expect(page).to have_content(@book_1.title)
+        expect(page).to_not have_content(@book_1.title)
         expect(page).to have_content(@book_2.title)
-        expect(page).to have_content(@book_3.title)
+        expect(page).to_not have_content(@book_3.title)
       end
     
       it "displays all of the book attributes" do 
         visit "/books"
     
-        expect(page).to have_content(@book_1.title)
-        expect(page).to have_content(@book_1.author.name)
-        expect(page).to have_content(@book_1.part_of_series)
-        expect(page).to have_content(@book_1.word_count)
-        expect(page).to have_content(@book_1.genre)
-        expect(page).to have_content(@book_1.created_at)
-        expect(page).to have_content(@book_1.updated_at)
         expect(page).to have_content(@book_2.title)
         expect(page).to have_content(@book_2.author.name)
         expect(page).to have_content(@book_2.part_of_series)
@@ -37,13 +30,6 @@ RSpec.describe 'the books index page' do
         expect(page).to have_content(@book_2.genre)
         expect(page).to have_content(@book_2.created_at)
         expect(page).to have_content(@book_2.updated_at)
-        expect(page).to have_content(@book_3.title)
-        expect(page).to have_content(@book_3.author.name)
-        expect(page).to have_content(@book_3.part_of_series)
-        expect(page).to have_content(@book_3.word_count)
-        expect(page).to have_content(@book_3.genre)
-        expect(page).to have_content(@book_3.created_at)
-        expect(page).to have_content(@book_3.updated_at)
       end
 
       it "displays a link to the Author index" do 

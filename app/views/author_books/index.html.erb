@@ -16,4 +16,5 @@
   <p>Log updated: <%= book.updated_at %></p>
 <% end %>
 
-<%= link_to "Create Book", "/authors/#{@author.id}/books/new" %>
+<%= button_to "Create Book", "/authors/#{@author.id}/books/new", method: :get %><br>
+<%= button_to "Sort Alphabetically", "/authors/#{@author.id}/books", method: :get, params: {sorted: true} %>

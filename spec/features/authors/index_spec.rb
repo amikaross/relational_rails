@@ -32,9 +32,11 @@ RSpec.describe 'the authors index page', type: :feature do
         expect(page).to have_link("Return Home", href: "/")
       end
 
-      it "displays a link to the 'New Author' page" do 
+      it "displays a button create a 'New Author' page" do 
         visit "/authors"
-        expect(page).to have_link("New Author", href: "/authors/new")
+        expect(page).to have_button("New Author")
+        click_button("New Author")
+        expect(current_path).to eq("/authors/new")
       end
     end
   end

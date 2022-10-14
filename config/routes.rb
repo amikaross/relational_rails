@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   post '/authors/:id/books', to: 'author_books#create'
   get 'authors/:id/edit', to: 'authors#edit'
   patch 'authors/:id', to: 'authors#update'
+  get '/books/:id/edit', to: 'books#edit'
+  patch '/books/:id', to: 'books#update'
+  delete '/authors/:id', to: 'authors#destroy'
+  delete 'books/:id', to: 'books#destroy'
 end
