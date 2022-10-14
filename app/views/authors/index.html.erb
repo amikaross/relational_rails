@@ -10,6 +10,7 @@
   <p>
     Log created: <%= author.created_at %><br>
     <%= button_to "Update #{author.name}", "/authors/#{author.id}/edit", method: :get %>
+    <%= button_to "Delete #{author.name}", "/authors/#{author.id}", method: :delete %>
   </p>
 <% end %>
 <br>

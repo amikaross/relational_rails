@@ -27,5 +27,23 @@ RSpec.describe "Author deletion" do
         expect(page).to_not have_content("Left Hand of Darkness")
       end
     end
+
+    describe "When I visit the Author's index page" do 
+      it "has a button to delete Author for each Author" do
+        author_1 = Author.create!(active: false, dob_year: 1950, name: "Nam Nam", country: "USA")
+        author_2 = Author.create!(active: true, dob_year: 1945, name: "Iain Banks", country: "UK")
+        author_3 = Author.create!(active: false, dob_year: 1989, name: "Lee Saville", country: "USA")
+        visit "/authors"
+
+        expect(page).to have_button("Delete Nam Nam")
+        expect(page).to have_button("Delete Iain Banks")
+        expect(page).to have_button("Delete Lee Saville")
+
+        click_button("Delete Nam Nam")
+        
+        expect(current_path).to eq("/authors")
+        expect(page).to_not have_content("Nam Nam")
+      end
+    end
   end
 end
