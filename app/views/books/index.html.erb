@@ -14,4 +14,5 @@
   <p>Word count: <%= book.word_count %></p>
   <p>Log created: <%= book.created_at %></p>
   <p>Log updated: <%= book.updated_at %></p>
+  <%= button_to "Update '#{book.title}'", "/books/#{book.id}/edit", method: :get %>
 <% end %>
