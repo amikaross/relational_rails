@@ -3,6 +3,14 @@
   <li><a href="/books">Book List</a></li>
   <li><a href="/">Return Home</a></li>
 </ul>
+<br><%= button_to "Create Book", "/authors/#{@author.id}/books/new", method: :get %><br>
+<%= button_to "Sort Alphabetically", "/authors/#{@author.id}/books", method: :get, params: {sorted: true} %>
+<br><%= form_with url: "/authors/#{@author.id}/books", method: :get, local: true do |form| %>
+  <%= form.label(:max_word_count, "Only return records with more than") %>
+  <%= form.text_field(:max_word_count) %>
+  <%= "number of words" %>
+  <%= form.submit("Submit") %>
+<% end %><br>
 
 <h1>List of Books by <%= @author.name %></h1>
 
@@ -15,6 +23,3 @@
   <p>Log created: <%= book.created_at %></p>
   <p>Log updated: <%= book.updated_at %></p>
 <% end %>
-
-<%= button_to "Create Book", "/authors/#{@author.id}/books/new", method: :get %><br>
-<%= button_to "Sort Alphabetically", "/authors/#{@author.id}/books", method: :get, params: {sorted: true} %>

@@ -65,6 +65,23 @@ RSpec.describe 'the authors books index page' do
         
         expect(@book_4.title).to appear_before(@book_1.title)
       end
+
+      it "has a form that allows me to limit the number of displayed books by word_count" do 
+        visit "/authors/#{@author_1.id}/books"
+
+        expect(page).to have_content("Only return records with more than")
+        expect(page).to have_field("max_word_count")
+        expect(page).to have_content("words")
+        expect(page).to have_content("#{@book_1.title}")
+
+        fill_in("max_word_count", with: "100,000")
+        click_button("Submit")
+
+        expect(current_path).to eq("/authors/#{@author_1.id}/books")
+        expect(page).to_not have_content("#{@book_1.title}")
+        expect(page).to have_content("#{@book_3.title}")
+        expect(page).to have_content("#{@book_4.title}")
+      end
     end
   end
 end
