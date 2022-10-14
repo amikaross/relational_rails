@@ -7,6 +7,8 @@ RSpec.describe 'the authors books index page' do
     @book_1 = @author_1.books.create!(part_of_series: false, word_count: 98000, title: "Left Hand of Darkness", genre: "Scifi/Fantasy")
     @book_2 = @author_2.books.create!(part_of_series: true, word_count: 56043, title: "Accelerando", genre: "Scifi")
     @book_3 = @author_1.books.create!(part_of_series: false, word_count: 105645, title: "My Go Story", genre: "Non-fiction")
+    @book_4 = @author_1.books.create!(part_of_series: false, word_count: 105645, title: "Alphabets", genre: "Non-fiction")
+
   end
 
   describe "As a visitor" do 
@@ -51,6 +53,17 @@ RSpec.describe 'the authors books index page' do
       it "displays a link to return home" do 
         visit "/authors/#{@author_1.id}/books"
         expect(page).to have_link("Return Home", href: "/")
+      end
+
+      it "displays a 'Sort Alphabetically' button which reloads the index, sorted" do 
+        visit "/authors/#{@author_1.id}/books"
+
+        expect(page).to have_button("Sort Alphabetically")
+        expect(@book_1.title).to appear_before(@book_4.title)
+
+        click_on("Sort Alphabetically")
+        
+        expect(@book_4.title).to appear_before(@book_1.title)
       end
     end
   end
