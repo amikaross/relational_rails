@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   get 'authors/:id/edit', to: 'authors#edit'
   patch 'authors/:id', to: 'authors#update'
   get '/books/:id/edit', to: 'books#edit'
-  patch 'books/:id', to: 'books#update'
-
+  patch '/books/:id', to: 'books#update'
+  delete '/authors/:id', to: 'authors#destroy'
 end

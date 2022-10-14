@@ -14,3 +14,4 @@
 <p>No. books: <%= @author.books.count %></p>
 <p><a href="/authors/<%= @author.id %>/books">Author's Books</a></p>
 <%= button_to "Update Author", "/authors/#{@author.id}/edit", method: :get %>
+<%= button_to "Delete", "/authors/#{@author.id}", method: :delete %>
