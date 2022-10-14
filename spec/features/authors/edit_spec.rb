@@ -25,5 +25,21 @@ RSpec.describe "the edit author page" do
         expect(page).to have_content("Nami Nami")
       end
     end
+
+    describe "when I visit the Authors Index page" do 
+      it "has an Update Author button for every author" do 
+        author_1 = Author.create!(active: false, dob_year: 1950, name: "Nam Nam", country: "USA")
+        author_2 = Author.create!(active: true, dob_year: 1945, name: "Iain Banks", country: "UK")
+        author_3 = Author.create!(active: false, dob_year: 1989, name: "Lee Saville", country: "USA")
+        visit "/authors"
+
+        expect(page).to have_button("Update Nam Nam")
+        expect(page).to have_button("Update Iain Banks")
+        expect(page).to have_button("Update Lee Saville")
+
+        click_button("Update Nam Nam")
+        expect(current_path).to eq("/authors/#{author_1.id}/edit")
+      end
+    end
   end
 end
