@@ -4,4 +4,8 @@ class Author < ApplicationRecord
   def self.sort_by_creation
     self.order(:created_at)
   end
+
+  def self.sort_by_book_amount
+    self.left_joins(:books).group(:id).order('COUNT(books.id) DESC')
+  end
 end

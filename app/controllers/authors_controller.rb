@@ -1,6 +1,9 @@
 class AuthorsController < ApplicationController 
   def index 
     @authors = Author.sort_by_creation
+    if params[:sorted] == "true" 
+      @authors = Author.sort_by_book_amount
+    end
   end
 
   def show 

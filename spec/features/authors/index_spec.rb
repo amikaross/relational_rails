@@ -53,6 +53,22 @@ RSpec.describe 'the authors index page', type: :feature do
         click_button("New Author")
         expect(current_path).to eq("/authors/new")
       end
+
+      it "displays a button to sort the Authors by the number of books" do 
+        @author_3.books.create!(part_of_series: false, word_count: 98000, title: "Left Hand of Darkness", genre: "Scifi/Fantasy")
+        @author_3.books.create!(part_of_series: true, word_count: 56043, title: "Accelerando", genre: "Scifi")
+        @author_2.books.create!(part_of_series: false, word_count: 105645, title: "My Go Story", genre: "Non-fiction")
+        visit "/authors"
+
+        expect(page).to have_button("Sort By No. of Books")
+        expect("Nam Nam").to appear_before("Iain Banks")
+        expect("Iain Banks").to appear_before("Lee Saville")
+
+        click_button("Sort By No. of Books")
+        
+        expect("Lee Saville").to appear_before("Iain Banks")
+        expect("Iain Banks").to appear_before("Nam Nam")
+      end
     end
   end
 end
