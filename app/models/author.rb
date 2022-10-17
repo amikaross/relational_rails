@@ -8,4 +8,8 @@ class Author < ApplicationRecord
   def self.sort_by_book_amount
     self.left_joins(:books).group(:id).order('COUNT(books.id) DESC')
   end
+
+  def count_books
+    books.count 
+  end
 end

@@ -30,4 +30,18 @@ RSpec.describe Author do
       end
     end
   end
+
+  describe "instance methods" do 
+    describe "#count_books" do 
+      it "returns the number of books a particular author has" do 
+        author_1 = Author.create!(active: false, dob_year: 1950, name: "Nam Nam", country: "USA")
+        author_1.books.create!(part_of_series: true, word_count: 98000, title: "Darkness", genre: "Fantasy")
+        author_1.books.create!(part_of_series: true, word_count: 1234831, title: "Light", genre: "Scifi")
+        author_2 = Author.create!(active: false, dob_year: 1950, name: "Nam Nam", country: "USA")
+
+        expect(author_1.count_books).to eq(2)
+        expect(author_2.count_books).to eq(0)
+      end
+    end
+  end
 end
