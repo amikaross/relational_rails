@@ -1,9 +1,3 @@
-<ul>
-  <li><a href="/authors">Author List</a></li>
-  <li><a href="/books">Book List</a></li>
-  <li><a href="/">Return Home</a></li>
-</ul>
-
 <h1><%= @author.name %></h1>
 
 <p>Active: <%= @author.active %></p>
@@ -11,7 +5,7 @@
 <p>Country: <%= @author.country %></p>
 <p>Log created: <%= @author.created_at %></p>
 <p>Log updated: <%= @author.updated_at %></p>
-<p>No. books: <%= @author.books.count %></p>
+<p>No. books: <%= @author.count_books %></p>
 <p><a href="/authors/<%= @author.id %>/books">Author's Books</a></p>
 <%= button_to "Update Author", "/authors/#{@author.id}/edit", method: :get %>
 <%= button_to "Delete", "/authors/#{@author.id}", method: :delete %>

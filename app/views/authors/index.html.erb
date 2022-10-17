@@ -1,13 +1,10 @@
-<ul>
-  <li><a href="/authors">Author List</a></li>
-  <li><a href="/books">Book List</a></li>
-  <li><a href="/">Return Home</a></li>
-</ul>
-
 <h1>List of Authors</h1>
+<%= button_to "Sort By No. of Books", "/authors", method: :get, params: {sorted: true} %>
+
 <% @authors.each do |author| %>
     <h3><%= link_to "#{author.name}", "/authors/#{author.id}" %></h3>
   <p>
+    No. books: <%= author.count_books %><br>
     Log created: <%= author.created_at %><br>
     <%= button_to "Update #{author.name}", "/authors/#{author.id}/edit", method: :get %>
     <%= button_to "Delete #{author.name}", "/authors/#{author.id}", method: :delete %>
