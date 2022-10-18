@@ -3,7 +3,7 @@ class AuthorBooksController < ApplicationController
     @author = Author.find(params[:id])
     @books = @author.books
     if params[:sorted] == "true" 
-      @books = @books.order(:title)
+      @books = @books.order_by_title
     end
     if params[:max_word_count] != nil
       number = params[:max_word_count].delete(",").to_i

@@ -8,4 +8,8 @@ class Book < ApplicationRecord
   def self.max_word_count(number)
     where("word_count > #{number}")
   end
+
+  def self.order_by_title
+    order(:title)
+  end
 end
