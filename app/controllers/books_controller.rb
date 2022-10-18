@@ -1,8 +1,11 @@
 class BooksController < ApplicationController
   def index 
-    @books = Book.part_of_series
     if params[:exact_keyword] != nil 
       @books = Book.exact_matched(params[:exact_keyword])
+    elsif params[:partial_keyword] != nil 
+      @books = Book.partial_matched(params[:partial_keyword])
+    else 
+      @books = Book.part_of_series
     end
   end
 
