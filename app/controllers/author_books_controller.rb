@@ -3,7 +3,7 @@ class AuthorBooksController < ApplicationController
     @author = Author.find(params[:id])
     @books = @author.books
     if params[:sorted] == "true" 
-      @books = @books.order(:title)
+      @books = @books.order_by_title
     end
     if params[:max_word_count] != nil
       number = params[:max_word_count].delete(",").to_i
@@ -21,6 +21,7 @@ class AuthorBooksController < ApplicationController
     redirect_to "/authors/#{author.id}/books"
   end
 
+  private 
   def book_params
     params.permit(:title, :genre, :word_count, :part_of_series)
   end
