@@ -4,6 +4,9 @@ class AuthorsController < ApplicationController
     if params[:sorted] == "true" 
       @authors = Author.sort_by_book_amount
     end
+    if params[:exact_keyword] != nil 
+      @authors = Author.exact_matched(params[:exact_keyword])
+    end
   end
 
   def show 

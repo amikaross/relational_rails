@@ -83,6 +83,25 @@ RSpec.describe 'the authors index page', type: :feature do
         expect(page).to have_content("No. books: 2")
         expect(page).to have_content("No. books: 1")
       end
+
+      it "displays a text-field and Search button which limits the displayed results to exact matches of the keyword" do 
+        author_4 = Author.create!(active: false, dob_year: 1821, name: "Leo Tolstoy", country: "Russia/USA")
+        visit "/authors"
+        
+        expect(page).to have_field("exact_keyword")
+        expect(page).to have_content(@author_2.name)
+        expect(page).to have_content(@author_3.name)
+        expect(page).to have_content(author_4.name)
+
+
+        fill_in "exact_keyword", with: "USA"
+        click_button("Search")
+
+        expect(page).to have_content(@author.name)
+        expect(page).to have_content(@author_3.name)
+        expect(page).to_not have_content(@author_2.name)
+        expect(page).to_not have_content(author_4.name)
+      end
     end
   end
 end

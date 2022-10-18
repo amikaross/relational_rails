@@ -1,6 +1,6 @@
 <h1>List of Books</h1>
 <br><%= form_with url: "/books", method: :get, local: true do |form| %>
-  <%= form.label(:exact_keyword, "Filter results by keyword:") %>
+  <%= form.label(:exact_keyword, "Filter results by exact keyword:") %>
   <%= form.text_field(:exact_keyword) %>
   <%= form.submit("Search") %>
 <% end %><br>
