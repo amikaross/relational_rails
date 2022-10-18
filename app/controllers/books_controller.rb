@@ -23,6 +23,7 @@ class BooksController < ApplicationController
     redirect_to "/books"
   end
 
+  private
   def book_params
     params.permit(:title, :genre, :word_count, :part_of_series)
   end
