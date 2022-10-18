@@ -12,4 +12,8 @@ class Book < ApplicationRecord
   def self.order_by_title
     order(:title)
   end
+
+  def self.exact_matched(string)
+    joins(:author).where(["title = ? OR genre = ? OR authors.name = ?", string, string, string])
+  end
 end
