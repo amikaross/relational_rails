@@ -9,6 +9,10 @@ class Author < ApplicationRecord
     left_joins(:books).group(:id).order('COUNT(books.id) DESC')
   end
 
+  def self.exact_matched(string)
+    where(["name = ? OR country = ? OR dob_year = ?", string, string, string.to_i])
+  end
+
   def count_books
     books.count 
   end

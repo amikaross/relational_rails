@@ -29,6 +29,16 @@ RSpec.describe Author do
         expect(Author.sort_by_book_amount).to eq([author_3, author_1, author_2])
       end
     end
+
+    describe "exact_matched" do 
+      it "returns a collection of author's who have attributes matching the given keyword exactly" do 
+        author_1 = Author.create!(active: false, dob_year: 1989, name: "Lee Saville", country: "USA")
+        author_2 = Author.create!(active: false, dob_year: 1950, name: "Nam Nam", country: "USA")
+        author_3 = Author.create!(active: true, dob_year: 1945, name: "Iain Banks", country: "UK")
+
+        expect(Author.exact_matched("USA")).to eq([author_1, author_2])
+      end
+    end
   end
 
   describe "instance methods" do 

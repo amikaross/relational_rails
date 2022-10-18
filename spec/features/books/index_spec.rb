@@ -34,17 +34,38 @@ RSpec.describe 'the books index page' do
 
       it "displays a link to the Author index" do 
         visit "/books"
+
         expect(page).to have_link("Author List", href: "/authors")
       end
 
       it "displays a link to the Book index" do 
         visit "/books"
+
         expect(page).to have_link("Book List", href: "/books")
       end
 
       it "displays a link to return home" do 
         visit "/books"
+
         expect(page).to have_link("Home", href: "/")
+      end
+
+      it "displays a text-field and Search button which limits the displayed results to exact matches of the keyword" do 
+        book_4 = @author_1.books.create!(part_of_series: true, word_count: 245842, title: "Conjuring", genre: "Scifi/Horror")
+        book_5 = @author_1.books.create!(part_of_series: true, word_count: 123456, title: "Sinister Scifi", genre: "Horror")
+        visit "/books"
+
+        expect(page).to have_field("exact_keyword")
+        expect(page).to have_content(book_4.title)
+        expect(page).to have_content(book_5.title)
+
+
+        fill_in "exact_keyword", with: "Scifi"
+        click_button("Search")
+
+        expect(page).to have_content(@book_2.title)
+        expect(page).to_not have_content(book_4.title)
+        expect(page).to_not have_content(book_5.title)
       end
     end
   end
