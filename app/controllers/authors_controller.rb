@@ -1,11 +1,13 @@
 class AuthorsController < ApplicationController 
   def index 
-    @authors = Author.sort_by_creation
-    if params[:sorted] == "true" 
-      @authors = Author.sort_by_book_amount
-    end
     if params[:exact_keyword] != nil 
       @authors = Author.exact_matched(params[:exact_keyword])
+    elsif params[:partial_keyword] != nil
+      @authors = Author.partial_matched(params[:partial_keyword])
+    elsif params[:sorted] == "true"
+      @authors = Author.sort_by_book_amount
+    else 
+      @authors = Author.sort_by_creation
     end
   end
 

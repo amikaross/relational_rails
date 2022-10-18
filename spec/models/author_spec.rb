@@ -39,6 +39,16 @@ RSpec.describe Author do
         expect(Author.exact_matched("USA")).to eq([author_1, author_2])
       end
     end
+
+    describe "partial_matched" do 
+      it "returns a collection of authors who have attributes partially matchign the given keyword" do 
+        author_1 = Author.create!(active: false, dob_year: 1989, name: "Lee Saville", country: "USA")
+        author_2 = Author.create!(active: false, dob_year: 1950, name: "Nam Nam", country: "United States")
+        author_3 = Author.create!(active: true, dob_year: 1945, name: "Iain Banks", country: "UK/USA")
+
+        expect(Author.partial_matched("USA")).to eq([author_1, author_3])
+      end 
+    end
   end
 
   describe "instance methods" do 
