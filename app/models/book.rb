@@ -14,6 +14,11 @@ class Book < ApplicationRecord
   end
 
   def self.exact_matched(string)
-    joins(:author).where(["title = ? OR genre = ? OR authors.name = ?", string, string, string])
+    joins(:author).where("title = ? OR genre = ? OR authors.name = ?", string, string, string)
+  end
+
+  def self.partial_matched(string)
+    s = "%#{string}%"
+    joins(:author).where("title ILIKE ? OR genre ILIKE ? OR authors.name ILIKE ?", s, s, s)
   end
 end

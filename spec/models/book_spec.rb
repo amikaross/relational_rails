@@ -35,5 +35,11 @@ RSpec.describe Book do
         expect(Book.exact_matched("Scifi")).to eq([@book_2])
       end
     end
+
+    describe "partial_matched" do 
+      it "returns a collection of books that has a field which partially matches the given keyword" do 
+        expect(Book.partial_matched("Scifi")).to eq([@book_1, @book_2])
+      end
+    end
   end
 end

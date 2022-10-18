@@ -13,6 +13,11 @@ class Author < ApplicationRecord
     where(["name = ? OR country = ? OR dob_year = ?", string, string, string.to_i])
   end
 
+  def self.partial_matched(string)
+    s = "%#{string}%"
+    where("name ILIKE ? OR country ILIKE ?", s, s)
+  end
+
   def count_books
     books.count 
   end

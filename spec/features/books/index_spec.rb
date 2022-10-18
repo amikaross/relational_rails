@@ -63,9 +63,26 @@ RSpec.describe 'the books index page' do
         fill_in "exact_keyword", with: "Scifi"
         click_button("Search")
 
+        expect(current_path).to eq("/books")
         expect(page).to have_content(@book_2.title)
         expect(page).to_not have_content(book_4.title)
         expect(page).to_not have_content(book_5.title)
+      end
+
+      it "displays a text-field and Search button which limits the displayed results to partial matches of the keyword" do 
+        book_4 = @author_1.books.create!(part_of_series: true, word_count: 245842, title: "Conjuring", genre: "Horror")
+        visit "/books"
+
+        expect(page).to have_field("partial_keyword")
+        expect(page).to have_content(book_4.title)
+
+        fill_in "partial_keyword", with: "Scifi"
+        click_button("Partial Match Search")
+
+        expect(current_path).to eq("/books")
+        expect(page).to have_content(@book_1.title)
+        expect(page).to have_content(@book_2.title)
+        expect(page).to_not have_content(book_4.title)
       end
     end
   end

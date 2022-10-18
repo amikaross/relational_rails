@@ -1,9 +1,14 @@
 <h1>List of Authors</h1>
 <%= button_to "Sort By No. of Books", "/authors", method: :get, params: {sorted: true} %>
 <br><%= form_with url: "/authors", method: :get, local: true do |form| %>
-  <%= form.label(:exact_keyword, "Filter results by exact keyword:") %>
+  <%= form.label(:exact_keyword, "Filter results by exact match to keyword:") %>
   <%= form.text_field(:exact_keyword) %>
   <%= form.submit("Search") %>
+<% end %><br>
+<%= form_with url: "/authors", method: :get, local: true do |form| %>
+  <%= form.label(:partial_keyword, "Filter results by partial match to keyword:") %>
+  <%= form.text_field(:partial_keyword) %>
+  <%= form.submit("Partial Match Search") %>
 <% end %><br>
 
 <% @authors.each do |author| %>
